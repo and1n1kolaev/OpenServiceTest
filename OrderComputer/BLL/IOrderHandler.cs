@@ -4,6 +4,6 @@ namespace OrderComputer.BLL
 {
     public interface IOrderHandler
     {
-        OrderItem Compute(OrderItem orderItem);
+        bool Compute(ref OrderItem orderItem);
     }
 }

@@ -22,9 +22,10 @@ namespace OrderComputer.BLL
             _computers.Add(new UberComputer());
         }
 
-        public OrderItem Compute(OrderItem orderItem)
+        public bool Compute(ref OrderItem orderItem)
         {
-            _computers.ForEach(computer =>
+            bool status = false;
+            foreach (var computer in _computers)
             {
                 try
                 {
@@ -34,16 +35,19 @@ namespace OrderComputer.BLL
                         var convertedOrder = computer.Execute(order);
                         orderItem.ConvertedOrder = JsonConvert.SerializeObject(order);
                         orderItem.IsComputed = true;
+                        status = true;
+                        break;
                     }
                 }
                 catch (Exception)
                 {
                     throw;
                 }
-            });
+            }
+           
 
 
-            return orderItem;
+            return status;
         }
     }
 }

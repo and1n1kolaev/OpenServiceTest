@@ -24,9 +24,10 @@ namespace OrderComputer
             try
             {
                 var unprocessedOrders = _repository.GetUnprocessedOrderItems().Result;
-                unprocessedOrders.ForEach(uOrder =>
+                unprocessedOrders.ForEach(orderItem =>
                 {
-                    _orderHandler.Compute(uOrder);
+                    if (_orderHandler.Compute(ref orderItem))
+                        _repository.UpdateOrderItem(orderItem); 
                 });
             }
             catch (Exception ex)

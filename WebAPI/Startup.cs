@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using WebAPI.Models;
+using WebAPI.Repository;
 
 namespace WebAPI
 {
@@ -35,6 +36,9 @@ namespace WebAPI
                     Version = "v2"
                 });
             });
+
+
+            services.AddTransient<IRepository, SqlRepository>();
 
         }
 

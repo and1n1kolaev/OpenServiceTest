@@ -10,7 +10,7 @@ namespace OrderComputer.BLL.Computers
         public string SystemName => "uber";
         public Order Execute(Order order)
         {
-            throw new ArgumentException(nameof(order));
+            throw new ArgumentException(SystemName);
         }
     }
 }
