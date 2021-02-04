@@ -1,0 +1,8 @@
+2021-02-05T00:22:24.6983764+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-02-05T00:22:24.7048077+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-02-05T00:22:24.7074340+07:00  [INF] Content root path: "C:\Users\Андрей\source\repos\WebAPI\ErrorHandlerWeb" (b5d60022)
+2021-02-05T00:23:31.8642480+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-02-05T00:23:31.8731618+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-02-05T00:23:31.8774605+07:00  [INF] Content root path: "C:\Users\Андрей\source\repos\WebAPI\ErrorHandlerWeb" (b5d60022)
+2021-02-05T00:24:13.3251855+07:00 8000000d-0005-fb00-b63f-84710c7967bb [ERR] Time: 05.02.2021 0:23:32, System: OrderComputer, Message: One or more errors occurred. (Недопустимое имя столбца "IsComputed".) (d63c8815)
+2021-02-05T00:24:13.3251717+07:00 80000053-0004-ff00-b63f-84710c7967bb [ERR] Time: 05.02.2021 0:23:38, System: OrderComputer, Message: One or more errors occurred. (Недопустимое имя столбца "IsComputed".) (7bafbb03)
