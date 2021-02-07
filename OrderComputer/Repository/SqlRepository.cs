@@ -16,18 +16,18 @@ namespace OrderComputer.Repo
             _context = new DBContext();
         }
 
-        public async Task<List<OrderItem>> GetUnprocessedOrderItems()
+        public List<OrderItem> GetUnprocessedOrderItems()
         {
-            return await _context.OrderItems
+            return _context.OrderItems
                 .AsNoTracking()
                 .Where(p => !p.IsComputed)
-                .ToListAsync();
+                .ToList();
         }
 
-        public async Task UpdateOrderItem(OrderItem order)
+        public void UpdateOrderItem(OrderItem order)
         {
             _context.Entry(order).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
       

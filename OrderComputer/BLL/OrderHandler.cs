@@ -31,7 +31,7 @@ namespace OrderComputer.BLL
                 {
                     if (computer.SystemName.Contains(orderItem.SystemType))
                     {
-                        var order = JsonConvert.DeserializeObject<Order>(orderItem.SourceOrder);
+                        var order = JsonConvert.DeserializeObject<Order>(orderItem.SourceOrder, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                         var convertedOrder = computer.Execute(order);
                         orderItem.ConvertedOrder = JsonConvert.SerializeObject(order);
                         orderItem.IsComputed = true;

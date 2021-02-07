@@ -8,7 +8,7 @@ namespace OrderComputer.Repo
 {
     public interface IRepository
     {
-        Task<List<OrderItem>> GetUnprocessedOrderItems();
-        Task UpdateOrderItem(OrderItem order);
+        List<OrderItem> GetUnprocessedOrderItems();
+        void UpdateOrderItem(OrderItem order);
     }
 }

@@ -14,26 +14,27 @@ namespace OrderComputer
         IRepository _repository;
         public Service()
         {
-            _errorHandler = new ErrorHandlerByWeb();
+            _errorHandler = new ErrorHandlerByFile("Log.txt");
             _orderHandler = new OrderHandler();
             _repository = new SqlRepository();
         }
 
         public void Run()
         {
-            try
+            var unprocessedOrders = _repository.GetUnprocessedOrderItems();
+            unprocessedOrders.ForEach(orderItem =>
             {
-                var unprocessedOrders = _repository.GetUnprocessedOrderItems().Result;
-                unprocessedOrders.ForEach(orderItem =>
+                try
                 {
                     if (_orderHandler.Compute(ref orderItem))
-                        _repository.UpdateOrderItem(orderItem); 
-                });
-            }
-            catch (Exception ex)
-            {
-                _errorHandler.WriteAsync(ex.Message);
-            }
+                        _repository.UpdateOrderItem(orderItem);
+                }
+                catch (Exception ex)
+                {
+                    _errorHandler.WriteAsync(ex.Message);
+                }
+            });
+
         }
     }
 }

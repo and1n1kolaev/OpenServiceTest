@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Text.Json;
 using System.Threading.Tasks;
 using WebAPI.DTO;
 using WebAPI.Models;
@@ -18,22 +19,30 @@ namespace WebAPI.Controllers
             _repository = repository;
         }
 
-        // POST: OrderController/Create
         [HttpPost]
         public async Task<ActionResult> Post([FromBody]Order order, string system)
         {
-            OrderItem orderItem = new OrderItem()
+            try
             {
-                OrderNumber = order.OrderNumber,
-                SourceOrder = JObject.FromObject(order).ToString(),
-                SystemType = system,
-                CreatedAt = DateTime.Now
-            };
+                OrderItem orderItem = new OrderItem()
+                {
+                    OrderNumber = Convert.ToInt64(order.OrderNumber),
+                    SourceOrder = JObject.FromObject(order).ToString(),
+                    SystemType = system,
+                    CreatedAt = DateTime.Now
+                };
 
-            await _repository.SaveOrderItem(orderItem);
+                await _repository.SaveOrderItem(orderItem);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
 
             return Ok();
         }
+
+
 
 
 

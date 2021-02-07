@@ -12,5 +12,6 @@ namespace WebAPI.Models
         public DateTime CreatedAt { get; set; }
         public bool IsComputed { get; set; }
 
+       
     }
 }

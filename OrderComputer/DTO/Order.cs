@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrderComputer.DTO
 {
+    [JsonObject]
     public class Order
     {
         public long OrderNumber { get; set; }
@@ -13,6 +14,7 @@ namespace OrderComputer.DTO
         public DateTime CreatedAt { get; set; }
     }
 
+    [JsonObject]
     public class Product
     {
         public int ID { get; set; }

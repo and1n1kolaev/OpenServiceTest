@@ -29,6 +29,8 @@ namespace WebAPI
                 .AddControllers()
                 .AddNewtonsoftJson();
 
+
+
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v2", new OpenApiInfo
